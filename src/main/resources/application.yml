@@ -1,0 +1,54 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://0.0.0.0:5432/postgres?currentSchema=graphql&stringtype=unspecified
+    username: postgres
+    password: 1
+    hikari:
+      pool-name: DateHikariCP
+      minimum-idle: 5
+      idle-timeout: 60000
+      maximum-pool-size: 100
+      auto-commit: true
+      max-lifetime: 180000
+      connection-timeout: 60000
+      connection-test-query: SELECT 1
+  redis:
+    host: 0.0.0.0
+    port: 6379
+    password: 1
+    database: 7
+    timeout: 120000
+    jedis:
+      pool:
+        max-active: -1
+        max-idle: 1500
+        min-idle: 10
+        max-wait: -1
+  graphql:
+    schema:
+      printer:
+        enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,info
+logging:
+  level:
+    root: INFO
+    com.graphql: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/graphql.log
+    max-history: 5
+    max-size: 100MB
+jwt:
+  token-secret: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAroqYUCda5CtdBuLpqKDX
+  token-ssuer: graphql-sample
+

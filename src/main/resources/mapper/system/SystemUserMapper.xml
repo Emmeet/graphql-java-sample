@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graphql.sample.system.mapper.SystemUserMapper">
+
+    <!-- Base Result Map -->
+    <resultMap id="BaseResultMap" type="com.graphql.sample.system.domain.bean.SystemUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="active" property="active"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="create_date" property="createDate"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_date" property="updateDate"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMapBo" type="com.graphql.sample.system.domain.bo.SystemUserBo">
+
+    </resultMap>
+
+    <!-- Base Column List -->
+    <sql id="Base_Column_List">
+        id
+        , username, password, first_name, last_name, avatar, phone, active, is_delete, create_date, create_by, update_date, update_by
+    </sql>
+
+    <select id="querySystemUserByUsername" parameterType="java.lang.String" resultMap="BaseResultMapBo">
+        select tsu.*
+        from t_system_user tsu
+        where tsu.username = #{username}
+          and tsu.is_delete = false
+    </select>
+
+</mapper>

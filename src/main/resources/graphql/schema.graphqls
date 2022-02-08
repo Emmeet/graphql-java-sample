@@ -1,0 +1,15 @@
+type Query {
+
+}
+type Mutation {
+
+}
+
+input QueryParams {
+    currentPage: Int
+    pageSize: Int
+}
+
+type ResultPayload {
+    success: Boolean!
+}

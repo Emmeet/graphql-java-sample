@@ -1,0 +1,47 @@
+extend type Query {
+    users: [UserInfo]
+    queryUsers(input: QueryParams): [UserInfo]
+}
+
+extend type Mutation {
+    login(email: String!, password: String!): LoginResult
+    register(input: UserInfoInput!): ResultPayload
+}
+
+type LoginResult {
+    token: String
+    username: String
+}
+
+extend type ResultPayload {
+    user: UserInfo
+}
+
+scalar DateTime
+
+type UserInfo {
+    id: ID
+    username: String
+    password: String
+    firstName: String
+    lastName: String
+    avatar: String
+    phone: String
+    active: Boolean
+    isDelete: Boolean
+    createBy: String
+    createDate: DateTime
+    updateBy: String
+}
+
+input UserInfoInput {
+    username: String!
+    password: String!
+    firstName: String
+    lastName: String
+    phone: String
+}
+
+extend input QueryParams {
+    username: String
+}
