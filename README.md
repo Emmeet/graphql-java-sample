@@ -25,10 +25,8 @@ username: admin
 
 password: 111111
 
-
-
 Next, please use it !
 
 ## Testing
 
-Coming soon...
+Use Spring Official Testing Tools and Webgraphqltester

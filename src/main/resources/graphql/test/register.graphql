@@ -1,0 +1,8 @@
+mutation {
+  register(input: {username: "admin1", password: "111111", firstName: "Steven", lastName: "Joe", phone: "111111111"}) {
+    success
+    user {
+      username
+    }
+  }
+}

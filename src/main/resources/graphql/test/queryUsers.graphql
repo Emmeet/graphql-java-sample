@@ -1,0 +1,6 @@
+{
+  queryUsers(input: {username: "admin"}) {
+    username
+    id
+  }
+}
