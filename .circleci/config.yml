@@ -18,7 +18,7 @@ jobs:
             - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
       - run:
           name: Deploy Over SSH
-          command: ssh $SSH_USER@$SSH_HOST "cd/root/upload && touch 1.txt"
+          command: ssh root@67.219.105.129 "cd/root/upload && touch 1.txt"
 
 workflows:
   build-and-deploy:
