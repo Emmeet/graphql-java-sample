@@ -18,7 +18,7 @@ jobs:
             - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
       - run:
           name: echo path
-          command: "pwd && ls"
+          command: ls
       - run:
           name: Deploy Over SSH
           command: scp -r /home/circleci/project $SSH_USER@$SSH_HOST:/root/cirleci/
