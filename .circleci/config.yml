@@ -21,7 +21,7 @@ jobs:
           command: ls
       - run:
           name: Deploy Over SSH
-          command: scp -r graphql-sample-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r ~/project/* $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
