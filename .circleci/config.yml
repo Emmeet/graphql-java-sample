@@ -18,7 +18,7 @@ jobs:
             - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
       - run:
           name: Deploy Over SSH
-          command: rsync -avce ssh build $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r target/* $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
