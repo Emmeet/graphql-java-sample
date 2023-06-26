@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  build-and-publish:
     docker:
       - image: cimg/openjdk:11.0
     steps:
@@ -9,9 +9,12 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
+      - add_ssh_keys:
+          fingerprints:
+            - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
       - run:
-            name: echo2
-            command: cd target && ls -a
+          name: Publish Over SSH
+          command: scp target/graphql-sample-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:/root/cirleci/
   deploy:
     machine:
       enabled: true
@@ -19,16 +22,13 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
-      - run:
-          name: Deploy Over SSH
-          command: scp -r /home/circleci/project/target/graphql-sample-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
   build-and-deploy:
     jobs:
-      - build
+      - build-and-publish
       - deploy:
           context: deploy
           requires:
-            - build
+            - build-and-publish
