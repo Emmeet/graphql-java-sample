@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: cimg/openjdk:11.0
+    working_directory: ~/graphql
     steps:
       - checkout
       - run:
@@ -21,7 +22,7 @@ jobs:
           command: ls
       - run:
           name: Deploy Over SSH
-          command: scp -r ~/project/* $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r ~/graphql $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
