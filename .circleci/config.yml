@@ -15,9 +15,6 @@ jobs:
       - run:
           name: Copy
           command: cp target/graphql-sample-0.0.1-SNAPSHOT.jar ~/jar
-      - run:
-          name: Publish Over SSH
-          command: scp target/graphql-sample-0.0.1-SNAPSHOT.jar root@67.219.105.129:/root/cirleci/
   deploy:
     machine:
       enabled: true
