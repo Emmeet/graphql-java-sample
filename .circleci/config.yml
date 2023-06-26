@@ -21,7 +21,7 @@ jobs:
           command: "pwd && ls"
       - run:
           name: Deploy Over SSH
-          command: scp -r target/* $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r /home/circleci/project $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
