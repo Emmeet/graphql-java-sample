@@ -22,7 +22,7 @@ jobs:
           command: ls
       - run:
           name: Deploy Over SSH
-          command: scp -r ~/graphql $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r ~ $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
