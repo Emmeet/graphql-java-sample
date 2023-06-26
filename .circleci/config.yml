@@ -10,9 +10,6 @@ jobs:
           name: Build
           command: mvn -B -DskipTests clean package
       - run:
-            name: echo1
-            command: pwd
-      - run:
             name: echo2
             command: cd target && ls -a
   deploy:
@@ -23,11 +20,8 @@ jobs:
           fingerprints:
             - "10:93:44:3c:5a:16:8a:9a:53:32:9b:fb:79:bf:fd:39"
       - run:
-          name: echo path
-          command: sudo find / -name graphql-sample-0.0.1-SNAPSHOT.jar
-      - run:
           name: Deploy Over SSH
-          command: scp -r ~/circleci $SSH_USER@$SSH_HOST:/root/cirleci/
+          command: scp -r /home/circleci/project/target/graphql-sample-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:/root/cirleci/
       - run: echo '部署完毕'
 
 workflows:
