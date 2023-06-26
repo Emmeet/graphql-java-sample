@@ -34,7 +34,6 @@ workflows:
   build-and-deploy:
     jobs:
       - build-and-publish
-          context: deploy
       - deploy:
           context: deploy
           requires:
